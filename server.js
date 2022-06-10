@@ -2,6 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 
+require('dotenv').config()
+
 const bodyparser = require('body-parser');
 
 
@@ -12,6 +14,7 @@ const dbConfig = require('./shared/connect');
 
 app.use(express.json());
 app.use(cors());
+
 
 app.use(bodyparser.json());
 
@@ -32,7 +35,7 @@ app.use('/query', queryRoute);
 
 
 
-const port = 9000;
+const port = process.env.PORT || 9000;
 
 
 app.listen(port, () => console.log(`app conneceted @ ${port}`))
